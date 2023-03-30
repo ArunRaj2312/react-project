@@ -1,0 +1,174 @@
+.search-container{
+    padding: 4rem 0;
+    .search-head{
+        font-size:1.8rem;
+        color: #303030;
+        padding-bottom: 2rem;
+        text-align: center;
+        font-weight: 400;
+    }
+    .search-links{
+        text-align: center;
+        justify-content: center;
+        a{
+            color: #303030;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        div{
+            position: relative;
+            
+        }
+        div::after{
+            position: absolute;
+            content: '';
+            width: 0;
+            border: 1px solid #d8232a;
+            bottom: 0;
+            left: 0;
+            transition: all 2s ease-in-out;
+        }
+        div:hover ::after{
+            width: 100%;
+
+        }
+        
+    }
+    .Search-bar{
+        width: 90%;
+        padding: .5rem;
+        margin: auto;
+        border:1px solid #909090;
+        border-radius: 2rem;
+        justify-content: space-between;
+        margin: 2rem auto;
+
+        div{
+        
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .search-icon{
+                position: absolute;
+                right: 0;
+
+            }
+            .search-loction{
+                background-color: #fbe9e9;
+                padding: .5rem 1rem;
+                border-radius: 2rem;
+                display: flex;
+                align-items: center;
+                margin-right:.5rem;
+            }
+            input{
+                border: none;
+                font-size: 1rem;
+                
+            }
+            input:focus-visible{
+                outline: none;
+
+            }
+            
+            svg{
+                color: #d8232a;
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+            .search-button{
+                background-color: #d8232a;
+                color: #fff;
+                padding: .6rem 2rem;
+                border-radius: 2rem;
+                font-weight: 600;
+                svg{
+                    color: #fff;
+                }
+            }
+
+        }
+        .search-flat{
+            border-left:1px solid  #d7d7d7 ;
+            border-right:1px solid  #d7d7d7 ;
+            position: relative;
+            .bhk-drop{
+                position: absolute;
+                z-index: 100;
+                top: 115%;
+                width: 350%;
+                background-color: #fff;
+                box-shadow: 0 3px 9px 0 rgba(48,48,48,0.2);
+                padding: 20px;
+                border-radius: 0 0 10px 10px;
+                display: block;
+                .flat{
+                    display: block;
+                    span{
+                        margin: 5px;
+                        border: 1px solid gray;
+                        border-radius: 50px;
+                        padding: 5px 10px;
+                    }
+                }
+                .bhk{
+                    span{
+                        margin: 5px;
+                        border: 1px solid gray;
+                        border-radius: 50px;
+                        padding: 5px 10px;
+                    }
+                }
+
+            }
+        }
+        .search-price{
+            position: relative;
+            .price-drop{
+                position: absolute;
+                top:110%; 
+                z-index: 100;
+                width: 180%;
+                background-color: #fff;
+                box-shadow: 0 3px 9px 0 rgba(48,48,48,0.2);
+                padding: 20px;
+                border-radius: 0 0 10px 10px;
+                input{
+                    padding-left:1rem;
+                    border: 1px solid gray;
+                    width: 100%;
+                    border-radius: 50px;
+                    padding: 5px 0;
+                    text-align: center;
+                }
+                .price-drops{
+                    overflow: auto;
+                    height: 200px;
+                    align-items: baseline;
+                    .min-price{
+                        flex-direction:column;
+                        width: 100%;
+                        span{
+                            padding: 5px 0;
+                        }
+                    }
+                    .max-price{
+                        flex-direction:column;
+                        span{
+                            padding: 5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.list{
+    border-radius: 0px!important;
+    border: none !important;
+    
+}
+.search-select{
+    display: flex;
+}

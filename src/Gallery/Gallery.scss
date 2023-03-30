@@ -1,0 +1,83 @@
+.gallary-container{
+    padding: 1rem 2rem;
+    .gallary-head{
+        padding: 1rem 0rem;
+        display: flex;
+        justify-content: space-between;
+        .heading{
+            position: relative;
+        }
+        .heading::after{
+            content: "";
+            position: absolute;
+            height: 4px;
+            border-radius: 2px;
+            width: 20%;
+            background-color: #007aff;
+            bottom: -.3rem;
+            left: .5rem;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            color: #d8232a;
+            font-weight: 600;
+           
+            svg{
+                margin: 0 .5rem;
+                font-size: 1rem;
+            }
+        }
+    }
+    .card-body{
+        padding: .5rem ;
+        justify-content: space-evenly;
+        .gallary-card:hover img{
+            transform: scale(1.1);
+        }
+        .gallary-card:hover{
+            box-shadow: 0 3px 9px 0 rgba(48,48,48,0.2);
+        }
+        .gallary-card{
+            border-radius: .5rem;
+            border: 1px solid #d7d7d7;       
+            overflow: hidden;
+            margin: 1rem 0;
+            img{
+                margin: -4px;
+            }
+            .card-content{
+                padding: 1.2rem 0;
+                h6{
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                }
+                p{
+                    color: #606060;
+                    font-size: .9rem;
+                    font-weight: 400;
+                    span{
+                        font-weight: 600;
+                        color: #303030;
+
+                    }
+                    
+                }
+                
+                .space1{
+                    padding-top:  .5rem ;
+                }
+                .space2{
+                    padding-bottom:  .5rem ;
+                }
+            }
+            
+        }
+
+    }
+    
+}
+h1,h2,h3,h4,h5,h6{
+    color: #303030 ;
+    font-weight: 400;
+}
