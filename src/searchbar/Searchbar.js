@@ -1,17 +1,17 @@
-import { Autocomplete, Button, FormControl, Grid, Input, Select, TextField, Typography,  } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
+import {Button, Grid, Typography,  } from '@mui/material'
+import React, { useContext, useState } from 'react'
 import './searchbar.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-// import { CheckBox } from '@mui/icons-material';
 import HomeIcon from '@mui/icons-material/Home';
-import { ShowChartOutlined } from '@mui/icons-material';
 import { mainContext } from '../Context';
-import FilterDetails from '../FilterDetails/FilterDetails';
 import { useNavigate } from 'react-router-dom';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 const Seachbar = () => {
     const [price,showPrice]=useState(false)
     const [flat,showFlat]=useState(false)
@@ -26,6 +26,13 @@ const Seachbar = () => {
     const Residentials=state.residential
     const  bhks=state.bhk
     const navigate=useNavigate()
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
     
   return (
     <Grid container className='search-container'>
@@ -48,7 +55,7 @@ const Seachbar = () => {
                     <a href='' >Commercial</a>
                 </Grid>
                 <Grid item xs={2}>
-                    <a href='' >Post Free Property Ad</a>
+                    <a href='' >Post Free Property</a>
                 </Grid>
             </Grid>
             <Grid container className='Search-bar'>
@@ -68,13 +75,13 @@ const Seachbar = () => {
                                 <Typography component='p' varient='p'>Residential <ExpandMoreIcon></ExpandMoreIcon></Typography>
                                 <Grid>
                                 {Residentials.map((e,index)=>{
-                                    return(<Typography component='span' varient='span' key={index} style={Residentials[index].check===true ? {background:'pink'}:{background:'white'}} onClick={()=>{dispatch({type:'resident',payload:{residential:e,check:!Residentials[index].check,index:index}})}}>{e.residential}</Typography>)
+                                    return(<Typography component='span' varient='span' key={index} style={Residentials[index].check===true ? {background:'pink',border:'none'}:{background:'white'}} onClick={()=>{dispatch({type:'resident',payload:{residential:e,check:!Residentials[index].check,index:index}})}}>{e.residential}</Typography>)
                                 })}
                                 </Grid>
                             </Grid>
                             <Grid item xs={12} className='bhk'>
                                 {bhks.map((e,index)=>{
-                                    return(<Typography component='span' varient='span' key={index} style={bhks[index].check===true ? {background:'pink'}:{background:'white'}} onClick={()=>{dispatch({type:'place',payload:{bhk:e,check:!bhks[index].check,index:index}})}}>{e.bhk} Bhk</Typography>)
+                                    return(<Typography component='span' varient='span' key={index} style={bhks[index].check===true ? {background:'pink',border:'none'}:{background:'white'}} onClick={()=>{dispatch({type:'place',payload:{bhk:e,check:!bhks[index].check,index:index}})}}>{e.bhk} Bhk</Typography>)
                                 })}
                             </Grid>
                             <Grid>
@@ -108,7 +115,7 @@ const Seachbar = () => {
                                 })}
                                 </Grid>:null}
                                 </Grid>
-                                {maxPriceBox ?<Grid className='max-price' item xs={6} onClick={()=>{showPrice(false)}}>
+                                {maxPriceBox ?<Grid className='max-price' item xs={6} onClick={()=>{showPrice(false);changeMaxPriceBox(false);changeMinPriceBox(true)}}>
                                 {budget.filter((e,index)=>{
                                     return(min<e)
                                 }).map((e,index)=>{
@@ -126,7 +133,18 @@ const Seachbar = () => {
         </Grid>
         
         <Grid item xs={3}>
+        <Slider {...settings} autoplay={true}>
+            <div>
             <img src='https://cdn.staticmb.com/magicservicestatic/images/revamp/mbhome-web/tvc/tvc-campaign-web-pnm.png' alt="imagr not found" />
+            </div>
+            <div>
+            <img src='https://cdn.staticmb.com/magicservicestatic/images/revamp/mbhome-web/tvc/tvc-campaign-web-pnm.png' alt="imagr not found" />
+            </div>
+            <div>
+            <img src='https://cdn.staticmb.com/magicservicestatic/images/revamp/mbhome-web/tvc/tvc-campaign-web-pnm.png' alt="imagr not found" />
+            </div>
+        </Slider>
+            
         </Grid>
 
     </Grid>

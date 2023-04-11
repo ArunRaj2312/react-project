@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #e0e7e547;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: #125ee9;
+    margin: 20px 0px;
+}
+.log-box{
+    width: 30%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+}
+.head{
+    text-align: center;
+    font-size: 20px;
+}
+.head p{
+    margin: 20px 0px;
+}
+input{
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.log-form div{
+    padding: 10px;
+}
+button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #125ee9;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.next{
+    text-align: center;
+}
+#demo{
+    color: red;
+    margin-left: 10px;
+}

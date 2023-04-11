@@ -19,28 +19,35 @@ function FilterDetails() {
             return(Number(minstate)<=Number(e['house_price'])*100000 && Number(e['house_price'])*100000<=Number(maxstate)
             )
         }).filter((element)=>{
-                        var returnchecker=[...bhkstate].every((value)=>value.bhk==='');
-                        // console.log(bhkstate.bhk);
+                        // var returnchecker=[...bhkstate].every((value)=>{console.log("value",value);});
+                        // console.log("state",bhkstate);
                         // console.log(element.flat);
+                        var  returnchecker=[...bhkstate].every((e)=>e.check===false);
                         [...bhkstate].forEach((ele)=>{
-                            // console.log("bhk",ele.bhk)
+                            // console.log("bhk",ele.check)
                             // console.log('element',element.flat);
-                            if (element.flat === ( ele.check ? ele.bhk : null)){
-                                returnchecker=true
+                            if (ele.check){
+                                if(ele.bhk===element.flat){                            
+                                    returnchecker=true
                                 // console.log('flat',ele.bhk)
+                                }
                             }
                         })
+                        // console.log("return",returnchecker)
                         return returnchecker
-                    }).filter((element)=>{
-                        var returnchecker=[...residentstate].every((value)=>value.residential==='');
-                        [...residentstate].forEach((ele)=>{
-                            // console.log(element.resident,ele.resident)
-                            if(element.resident===(ele.check ? ele.residential:null)){
-                                returnchecker=true
-                            }
-                        })
-                        return returnchecker
-                    })
+            }).filter((element)=>{
+                var returnchecker=[...residentstate].every((e)=>e.check===false);
+                [...residentstate].forEach((ele)=>{
+                    // console.log("element",ele);
+                    if(ele.check){
+                        if(ele.residential===element.resident){
+                            returnchecker=true
+                        }
+                    }
+                })
+               return returnchecker
+            })
+                    
                     // console.log(filterDetails);
                     return filterDetails
     }

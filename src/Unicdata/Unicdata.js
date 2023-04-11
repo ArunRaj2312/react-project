@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Button, Grid, Typography } from "@mui/material"
+import React, { useContext,useEffect,useState } from "react";
+import { Button, Grid } from "@mui/material"
 import { useParams } from "react-router-dom";
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import HouseSidingSharpIcon from '@mui/icons-material/HouseSidingSharp';
@@ -15,6 +15,10 @@ import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 import NoCrashSharpIcon from '@mui/icons-material/NoCrashSharp';
 import AirlineSeatIndividualSuiteIcon from '@mui/icons-material/AirlineSeatIndividualSuite';
 import FormatListBulletedSharpIcon from '@mui/icons-material/FormatListBulletedSharp';
+import MaxWidthDialog from "../DialogBox/DialogBox";
+import PhoneIcon from '@mui/icons-material/Phone';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import EmailIcon from '@mui/icons-material/Email';
 import './Unicdata.scss'
 import { mainContext } from "../Context";
 
@@ -24,6 +28,9 @@ const Unicdata=()=>{
     const stateApi=useContext(mainContext)
     const api=stateApi.state.gallery
     console.log("param",param);
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
     return(
         <Grid className="unic-page">
         {[...api].filter((element,index)=>{
@@ -100,7 +107,7 @@ const Unicdata=()=>{
                     <Grid className="Unic-offer"><p><span>OFFER</span> 40th Anniversary offer . Save up {Math.round(ele.house_price/8) }Lakhs</p></Grid>
                     <Grid container className="Unic-buttons"> 
                         <Grid item>
-                            <Button onClick={()=>{}} className='contact-button-1'>Contact Builder</Button>
+                            <MaxWidthDialog />
                             <Button onClick={()=>{}} className='contact-button-2'> Book Site Visit</Button>
                         </Grid>
                         <Grid item>
@@ -201,7 +208,7 @@ const Amenities = () => {
             <Grid container className="amenities-container">
                 {[...details].map((ele,index)=>{
                    
-                   return<Grid container item xs={4} className="amenities-elements">
+                   return<Grid container item xs={4} key={index} className="amenities-elements">
                         {ele.icon}
                         <span>{ele.text}</span>
                     </Grid>
@@ -213,17 +220,47 @@ const Amenities = () => {
         </Grid>
     )
 }
+var i=1
 const Regiterform = () =>{
+    const [name,getName]=useState('')
+    const [phoneNum,getPhoneNum]=useState('')
+    const [gmail,getGmail]=useState('')
+    const [validation,checkValidation]=useState(false)
+    const [call,callMe]=useState(false)
+    
+    const detailsInput=(e)=>{
+        if(e.target.name==='name'){
+            getName(e.target.value)
+        }
+        else if(e.target.name==='mail'){
+            getGmail(e.target.value)
+        }
+        else if(e.target.name==='number'){
+            if(i<=10){
+                getPhoneNum(e.target.value)
+                i++
+            }
+        }
+    }
+    const getDetails=(e)=>{
+        e.preventDefault()
+        checkValidation(true)
+        if(name!=='' && phoneNum!=='' && gmail!==''){
+            callMe(true)
+        }
+    }
     return(
         <Grid className="unic-form">
             <Grid className="form-head">
                 <h1>Contact Builder </h1>
                 <h1>Doshi Housung Team</h1>
-                <span><a href="tel:9688717898"> 91+96******89</a></span>
             </Grid>
-            <Grid className="form-head">
-                <input type={'text'} placeholder='YOUR NAME'/>
-                <input type={'text'} placeholder='Email'/>
+            <Grid className="form-head validation">
+                <form>
+                <input type={'text'} placeholder='YOUR NAME' name='name' onChange={(e)=>detailsInput(e)} required/>
+                <p>{validation?(name==='' ? 'please enter the name':null):null}</p>
+                <input type={'email'} placeholder='Email' name='mail' onChange={(e)=>detailsInput(e)} required/>
+                <p>{validation?(gmail==='' ? 'please enter the mail':null):null}</p>
                 <Grid className="form-select">
                     <select>
                         <option>IND +91</option>
@@ -231,10 +268,18 @@ const Regiterform = () =>{
                         <option>UK +72</option>
                         <option>NES +44</option>
                     </select>
-                    <input type={'text'} placeholder='Moblie Number'/>
+                    <input type={'number'} placeholder='Moblie Number' name='number' value={phoneNum} max={5} onChange={(e)=>detailsInput(e)} required/>
+                    <p>{validation?(phoneNum==='' ? 'please enter the phone number':null):null}</p>
                 </Grid>
-                <p className="form-text">I Agree to MagicBricks <span>Terms of use</span></p>
-                <Button onClick={()=>{}} className='contact-button-1'>Get Contact Details</Button>
+                <h5 className="form-text">I Agree to MagicBricks <span>Terms of use</span></h5>
+                <Button onClick={(e)=>getDetails(e)} className='contact-button-1'>Get Contact Details</Button>
+                </form>
+                {call?
+                <Grid className="call-me">
+                    <a href=""><Grid><PhoneIcon /></Grid></a>
+                    <a href=""><Grid><WhatsAppIcon /></Grid></a>
+                    <a href=""><Grid><EmailIcon /></Grid></a>
+                </Grid>:null}
             </Grid>
             <Grid className="form-head">
                 <p className="form-download"><InsertDriveFileIcon/>Download Brochure</p>

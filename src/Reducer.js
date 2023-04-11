@@ -2,8 +2,8 @@ export const initialstate={
     gallery:[],
     minValue:0,
     maxValue:10000000,
-    residential:[{residential:'Flat',check:true},{residential:'House/Villa',check:true},{residential:'Plot',check:true}],
-    bhk:[{bhk:'1',check:true},{bhk:'2',check:true},{bhk:'3',check:true},{bhk:'4',check:false},{bhk:'5',chech:false},{bhk:'6',check:false},]
+    residential:[{residential:'Flat',check:true},{residential:'House',check:true},{residential:'Plot',check:false}],
+    bhk:[{bhk:'1',check:true},{bhk:'2',check:true},{bhk:'3',check:true},{bhk:'4',check:false},{bhk:'5',check:false},{bhk:'6',check:false}]
 }
 
 export const stateReducer=(state,action)=>{

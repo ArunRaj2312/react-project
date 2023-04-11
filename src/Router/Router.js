@@ -5,8 +5,11 @@ import Subheader from '../Subheader/Subheader'
 import Searchbar from '../searchbar/Searchbar'
 import Explore from '../Explore/Explore'
 import Gallery from '../Gallery/Gallery'
+import Filterhead from '../Filterhead/Filterhead'
 import FilterDetails from '../FilterDetails/FilterDetails'
 import Unicdata from '../Unicdata/Unicdata'
+// import Login from '../login/Login'
+// import Signup from '../login/Singup'
 import { Footer } from '../Footer/Footer'
 import { mainContext } from '../Context'
 import { stateReducer,initialstate } from '../Reducer'
@@ -34,6 +37,7 @@ function Router() {
             </Route>
             <Route path='/next' element={
               <>
+              <Filterhead />
               <FilterDetails />
               </>
             }>

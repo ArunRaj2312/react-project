@@ -6,7 +6,7 @@ import './Subheader.scss'
 
 const Subheader = () => {
   return (
-    <Grid container className='Sub-header'>
+    <Grid container className='Sub-header' id={'home'}>
         <Grid item xs={1}>
          <a className='sub-head-links' href='https://www.magicbricks.com/'>Buy <ExpandMoreIcon/></a>
         </Grid>
